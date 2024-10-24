@@ -1,17 +1,14 @@
 import { defineConfig, UserConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { viteSingleFile } from "vite-plugin-singlefile"
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(() => {
   const config = {
-    plugins: [react()],
+    plugins: [react(), viteSingleFile()],
   } as UserConfig
-
-  if (command === 'build') {
-    config.base = '/ditto-custom/'
-  }else {
-    config.base = './'
-  }
+  
+  config.base = './'
 
   return config
 })
